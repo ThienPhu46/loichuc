@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lời Yêu Thương - Ngày 1/6</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff99cc, #ff66b2);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+      padding: 20px;
+      max-width: 2000px;
+      margin-bottom: 20px;
+    }
+
+    .heart-img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      clip-path: path('M 100 180 C 40 150, 0 100, 50 50 C 100 0, 150 50, 100 100 C 150 50, 200 0, 250 50 C 300 100, 260 150, 200 180 Z');
+      clip-path: path("M75 30 C75 15, 50 0, 25 30 C0 60, 25 90, 50 110 C75 90, 100 60, 75 30 Z"); /* Scaled */
+      clip-path: polygon(
+        50% 15%,
+        61% 0%,
+        80% 5%,
+        100% 30%,
+        90% 60%,
+        50% 100%,
+        10% 60%,
+        0% 30%,
+        20% 5%,
+        39% 0%
+      ); /* Heart shape polygon (fallback) */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .heart-img:hover {
+      transform: scale(1.15) rotate(3deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .wish-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background: #ff3385;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .wish-button:hover {
+      background: #e60073;
+      transform: translateY(-2px);
+    }
+
+    .wish-message {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 24px;
+      color: #ff3385;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      100% { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .heart-img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .wish-button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      .wish-message {
+        font-size: 18px;
+        padding: 15px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="/img/1.jpg" class="heart-img" alt="Heart 1" />
+    <img src="/img/2.jpg" class="heart-img" alt="Heart 2" />
+    <img src="/img/3.jpg" class="heart-img" alt="Heart 3" />
+    <img src="/img/4.jpg" class="heart-img" alt="Heart 4" />
+    <img src="/img/5.jpg" class="heart-img" alt="Heart 5" />
+    <img src="/img/6.jpg" class="heart-img" alt="Heart 6" />
+    <img src="/img/7.jpg" class="heart-img" alt="Heart 7" />
+    <img src="/img/8.jpg" class="heart-img" alt="Heart 8" />
+    <img src="/img/9.jpg" class="heart-img" alt="Heart 9" />
+    <img src="/img/10.jpg" class="heart-img" alt="Heart 10" />
+  </div>
+  <button class="wish-button" onclick="showWish()">Gửi Lời Chúc</button>
+  <div class="wish-message" id="wishMessage"></div>
+
+  <script>
+    const wishes = [
+      "Hôm nay là ngày của những tâm hồn trẻ con, và anh chỉ muốn nhắc rằng: em không cần phải mạnh mẽ suốt ngày đâu. Mệt thì nghỉ một chút, buồn thì nói ra. Dù chuyện gì xảy ra, anh vẫn luôn ở đây, bên em. Chúc em một ngày 1/6 nhẹ nhàng, đủ yên bình để mỉm cười lại nhé.❤️"
+
+    ];
+
+    function getRandomWish() {
+      const randomIndex = Math.floor(Math.random() * wishes.length);
+      return wishes[randomIndex];
+    }
+
+    function showWish() {
+      const wishMessage = document.getElementById('wishMessage');
+      wishMessage.textContent = getRandomWish();
+      wishMessage.style.display = 'block';
+      setTimeout(() => {
+        wishMessage.style.display = 'none';
+      }, 10000);
+    }
+
+  </script>
+</body>
+</html>
